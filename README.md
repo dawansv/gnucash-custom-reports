@@ -13,9 +13,41 @@ In the meantime I am making these changes available as a custom report so that u
 
 This version is offered as a custom report so that users that wish to provide feedback are able to test the feature.
 
-General instructions on how to load custom report are available on the wiki: https://wiki.gnucash.org/wiki/Custom_Reports#Loading_Your_Report
+General instructions on how to load custom reports are available on the wiki: https://wiki.gnucash.org/wiki/Custom_Reports#Loading_Your_Report
 
-I will provide more specific instructions here soon...
+Here I will explain how to load the report from your user directory, without changing any of the official installation files.
+
+### Step 1. Locate the installation directory for custom reports
+
+1. Start GnuCash 5.0
+2. Go to menu Help - About
+3. In the About GnuCash dialog, locate the entry for **GNC_USERDATA_DIR**. 
+ 
+**GNC_USERDATA_DIR** is the first entry in the list. Keep note of this directory. You can even click on the link to open it.
+
+### Step 2. Download transaction-tags.scm and save it in the custom report directory
+
+Open [transaction-tags.scm](https://github.com/dawansv/gnucash-transaction-tags/blob/main/transaction-tags.scm) in the file list here on github. After opening the file, click on the Downlad Raw File button on the right-hand side of the screen. Save the file in the directory located in Step 1.
+
+![image](https://github.com/dawansv/gnucash-transaction-tags/assets/267163/8fd30256-5a5e-42df-b226-3acd3a567ef0)
+
+### Step 3. Locate the installation directory for the custom reports definition file (config-user.scm)
+
+Custom reports need to be initialized in a config file called _config-user.scm_
+
+Go back to the _About GnuCash_ dialog from Step 1. 
+
+This time locate the **second** entry **GNC_USERCONFIG_DIR**. Click on the link to open the directory.
+
+### Step 4. Update or create config-user.scm
+
+If there is **already** an existing file called _config-user.scm_ in the directory from Step 3 then you need to edit that file and add this line to it:
+
+`(load (gnc-build-userdata-path "transaction-tags.scm"))`
+
+If there **isn't** a file called _config-user.scm_ in that directory, then you can either create one and put the above line in it or you can simply download and save the sample [config-user.scm](https://github.com/dawansv/gnucash-transaction-tags/blob/main/config-user.scm) provided here.
+
+### Step 5. Restart GnuCash
 
 After installation, the custom "Transaction Report with Tags" should be available under the Reports - Experimental menu.
 
