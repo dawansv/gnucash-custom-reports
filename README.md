@@ -92,19 +92,19 @@ Now my headings are a cleaner Anna, Bob and Nobody.
 ![image](https://user-images.githubusercontent.com/267163/235810305-b187e3c1-5990-4c9f-a09a-fd0664e839dd.png)
 
 It is possible to remove the transactions with no matching tags by using the existing transaction filter (filter tab). Simply put the same tag prefix (# or whatever else you are using) in the Transaction Filter field.
-![image](https://user-images.githubusercontent.com/267163/235810409-6d96c353-3e0e-48d3-aede-e4510a9fd62d.png)
+![image](https://github.com/dawansv/gnucash-transaction-tags/assets/267163/cf5dc927-9534-46db-aa2c-c1bd88e47f79)
 
 Here only Anna and Bob are listed. No-match "Nobody" is no longer there.
 ![image](https://user-images.githubusercontent.com/267163/235810480-de731104-ab48-4f30-a4dd-6257ef9f7f96.png)
 
 Now I only want to see unmatched transactions.
-![image](https://user-images.githubusercontent.com/267163/235812471-4aff7c8b-12f4-454b-b865-eb5d218a9f5b.png)
+![image](https://github.com/dawansv/gnucash-transaction-tags/assets/267163/2da6ae6c-2631-47a8-b92b-b4ea0f803945)
 
 These are just transactions that are not assigned to anybody
 ![image](https://user-images.githubusercontent.com/267163/235812541-32044a35-a32a-46ee-9942-228b9b0cc9fe.png)
 
-I could show Anna and Nobody, excluding bob from the view (his transactions are excluded, not in nobody)
-![image](https://user-images.githubusercontent.com/267163/235812651-0a44e31f-9151-4252-9789-632d36a00b6b.png)
+I could show Anna and Nobody, excluding Bob from the view (his transactions are excluded, not in nobody)
+![image](https://github.com/dawansv/gnucash-transaction-tags/assets/267163/37809e83-6c00-42b9-b27e-a2bb9fd164a5)
 
 Here is just Anna and Nobody
 ![image](https://user-images.githubusercontent.com/267163/235812705-d9a8a4e5-2f4b-4ff4-97c2-b9f0b8b2920e.png)
