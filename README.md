@@ -8,7 +8,7 @@
 
 ## Introduction
 
-This is a custom report (based on the Transaction Report) that provides some features related to the long-discussed request of being able to use orthogonal categories, classes, tags or "analytical dimensions" to retrieve and group transactions accross several general ledger accounts. 
+This is a custom report (based on the Transaction Report) that provides some features related to the long-discussed request of being able to use orthogonal categories, classes, tags or "analytical dimensions" to retrieve and group transactions across several general ledger accounts. 
 See https://bugs.gnucash.org/show_bug.cgi?id=113772
 
 This proof of concept only focuses on producing a transaction report sorted by user-defined tags. Whether a final version of this report makes it to the official GnuCash release depends on a lot of factors and a lot more testing, user feedback and documentation. 
@@ -17,7 +17,7 @@ In the meantime I am making these changes available as a custom report so that u
 
 ## Limitations
 
-This custom report is not a feature-rich solution. It only provides one type of report (similar to the existing transaction report) and does not provide any feature to "bulk manage" existing or future user-defined tags. So there is no feature to bulk rename, bulk move or bulk delete tags for instance. All changes to the data file (adding and changes tags) are done manually by the user. This feature only provides a custom report that uses tags as created by the user.
+This custom report is not a feature-rich solution. It only provides one type of report (similar to the existing transaction report) and does not provide any feature to "bulk manage" existing or future user-defined tags. So there is no feature to bulk rename, bulk move or bulk delete tags for instance. All changes to the data file (adding and changing tags) are done manually by the user. This feature only provides a custom report that uses tags as created by the user.
 
 ## Installation
 
