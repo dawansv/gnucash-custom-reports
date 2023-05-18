@@ -1,17 +1,27 @@
 # Custom GnuCash 5.x Transaction Report with Tags
-## Introduction
-This repository contains the custom report version of changes to the default transaction report I am currently working on.
 
-This is a proof of concept related to the long discussed issue around behind able to use analytical dimensions. 
+  * [Introduction](#introduction)
+  * [Limitations](#limitations)
+  * [Installation](#installation)
+  * [Report Features](#report-features)
+  * [Examples](#examples)
+
+## Introduction
+
+This is a custom report that provides some features related to the long-discussed request of being able to use orthogonal categories, classes, tags or "analytical dimensions" to retrieve and group transactions accross several general ledger accounts. 
 See https://bugs.gnucash.org/show_bug.cgi?id=113772
 
 This proof of concept only focuses on producing a transaction report sorted by user-defined tags. Whether a final version of this report makes it to the official GnuCash release depends on a lot of factors and a lot more testing, user feedback and documentation. 
 
 In the meantime I am making these changes available as a custom report so that users can start using it (if they wish) and provide feedback. For now the best place to provide feedback is on the official Pull Request itself https://github.com/Gnucash/gnucash/pull/1623 
 
+## Limitations
+
+This custom report is not a feature-rich solution. It only provides one type of report (similar to the existing transaction report) and does not provide any feature to "bulk manage" existing or future user-defined tags. So there is no feature to bulk rename, bulk move or bulk delete tags for instance. All changes to the data file (adding and changes tags) are done manually by the user. This feature only provides a custom report that uses tags as created by the user.
+
 ## Installation
 
-This version is offered as a custom report so that users that wish to provide feedback are able to test the feature.
+This version is offered as a custom report so that users that wish to provide feedback are able to test the feature. It can be easily installed and uninstalled and does not modify the core GnuCash files nor the data file (beyond user-defined tags added manually by the user).
 
 General instructions on how to load custom reports are available on the wiki: https://wiki.gnucash.org/wiki/Custom_Reports#Loading_Your_Report
 
