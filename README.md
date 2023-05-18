@@ -21,29 +21,22 @@ This custom report is not a feature-rich solution. It only provides one type of 
 
 ## Installation
 
-This version is offered as a custom report so that users that wish to provide feedback are able to test the feature. It can be easily installed and uninstalled and does not modify the core GnuCash files nor the data file (beyond user-defined tags added manually by the user).
+This version is offered as a custom report. It can be easily installed and uninstalled and does not modify the core GnuCash files nor the data file (beyond user-defined tags added manually by the user).
 
-General instructions on how to load custom reports are available on the wiki: https://wiki.gnucash.org/wiki/Custom_Reports#Loading_Your_Report
-
-Here I will explain how to load the report from your user directory, without changing any of the official installation files.
+Specific instructions below are based on more generic instructions on how to load custom reports available on the wiki: https://wiki.gnucash.org/wiki/Custom_Reports#Loading_Your_Report
 
 ### Step 1. Download and Unzip the files
 
-Download the zip with the files from the Code button.
+Download the zip with the files from the Github Code button. Then unzip the files in a temporary directory.
 
 ![image](https://github.com/dawansv/gnucash-transaction-tags/assets/267163/c59f5e03-ba77-4fdb-afbf-94fe75737959)
-
-Unzip the files in a temporary directory
 
 ### Step 2. Copy transaction-tags.scm in the installation directory for custom reports
 
 1. Start GnuCash 5.0
 2. Go to menu Help - About
-3. In the About GnuCash dialog, locate the entry for **GNC_USERDATA_DIR**. 
- 
-**GNC_USERDATA_DIR** is the first entry in the list. Keep note of this directory. You can even click on the link to open it.
-
-Copy _transaction-tags.scm_ from the zip file into that directory.
+3. In the About GnuCash dialog, locate the entry for **GNC_USERDATA_DIR**. It's the first entry in the list. Keep note of this directory. You can even click on the link to open it.
+4. Copy _transaction-tags.scm_ extracted from the zip file into that directory.
 
 ### Step 3. Locate the installation directory for the custom reports definition file (config-user.scm)
 
