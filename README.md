@@ -1,7 +1,6 @@
 # Custom Reports for GnuCash 5.x
 
   * [Introduction](#introduction)
-  * [Limitations](#limitations)
   * [Installation](#installation)
   * [Report Features](#report-features)
 
