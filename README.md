@@ -10,13 +10,17 @@
 This is repository contains a series of custom reports for GnuCash 5.x.
 
 ### Transaction Report Extended
+
 **Filename**: transaction-extended.scm
+
 **Description**: Based on the built-in transaction report, it provides a Sort by Substring option which included a regular expression match similar to the one offered for the transaction filter. That feature is the generic version of the Transaction Report with Tags.
 
 ### Transaction Report with Tags
+
 **Filename**: transaction-tags.scm
-**Description**: An earlier version of transaction-extended.scm that focusses on Sort by tags specifically. It was releases as a proof-of-concept to provide some basic features related to the long-discussed request of being able to use orthogonal categories, classes, tags or "analytical dimensions" to retrieve and group transactions across several general ledger accounts. 
-See https://bugs.gnucash.org/show_bug.cgi?id=113772
+
+**Description**: An earlier version of transaction-extended.scm that focusses on Sort by tags specifically. It was releases as a proof-of-concept to provide some basic features related to the long-discussed request of being able to use orthogonal categories, classes, tags or "analytical dimensions" to retrieve and group transactions across several general ledger accounts. See https://bugs.gnucash.org/show_bug.cgi?id=113772
+
 **Limitations**: This custom report is not a feature-rich solution. It only provides one type of report (similar to the existing transaction report) and does not provide any feature to "bulk manage" existing or future user-defined tags. So there is no feature to bulk rename, bulk move or bulk delete tags for instance. All changes to the data file (adding and changing tags) are done manually by the user. This feature only provides a custom report that uses tags as created by the user.
 
 ## Installation
