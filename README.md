@@ -63,11 +63,11 @@ After restarting GnuCash, the custom "Transaction Report with Tags" should be av
 
 ## Report Features 
 
-#### Transaction Report Extended
+### Transaction Report Extended
 
 (TO DO)
 
-#### Transaction Report with Tags
+### Transaction Report with Tags
 
 A new tags sort key is made available in the primary and secondary key drop-down list, in the sorting options.
 
