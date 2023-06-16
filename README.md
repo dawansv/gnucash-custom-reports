@@ -13,7 +13,7 @@ This is repository contains a series of custom reports for GnuCash 5.x.
 
 **Filename**: transaction-extended.scm
 
-**Description**: Based on the built-in transaction report, it provides a Sort by Substring option which included a regular expression match similar to the one offered for the transaction filter. That feature is the generic version of the Transaction Report with Tags.
+**Description**: Based on the built-in transaction report, it provides a Sort by Substring option which includes a regular expression match similar to the one offered for the transaction filter. That feature is the generic version of the Transaction Report with Tags.
 
 ### Transaction Report with Tags
 
