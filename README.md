@@ -53,9 +53,10 @@ This time locate the **second** entry **GNC_USERCONFIG_DIR**. Click on the link 
 
 ### Step 4. Update or create config-user.scm
 
-If there is **already** an existing file called _config-user.scm_ in the directory from Step 3 then you need to edit that file and add this line to it:
+If there is **already** an existing file called _config-user.scm_ in the directory from Step 3 then you need to edit that file and add whichever of these lines match the report(s) you want to enable:
 
-`(load (gnc-build-userdata-path "[report-filename].scm"))`
+`(load (gnc-build-userdata-path "transaction-extended.scm"))`
+`(load (gnc-build-userdata-path "transaction-tags.scm"))`
 
 If there **isn't** a file called _config-user.scm_ in that directory, then you can either create one and put the above line in it or you can simply use the file that came with the zip file.
 
