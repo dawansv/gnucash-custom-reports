@@ -118,6 +118,7 @@
 ;; "Running Totals" is the plural form as it refers to the running total and running subtotals.
 ;; To be consistent, also consider how the singular form "Running Total" is translated.
 (define optname-running-totals (N_ "Running Totals"))
+(define optname-permissive-split-match (N_ "Use More Permissive Match for Other Account Name and Code"))
 
 ;;Sorting
 (define pagename-sorting (N_ "Sorting"))
@@ -260,6 +261,64 @@ in the Options panel."))
             substring-cased))
       (list 'last-string
             (if (string-null? no-match-heading) (G_ "[No Match]") no-match-heading)))))
+            
+;; display an account name depending on the options the user has set
+(define (account-namestring account show-account-code?
+                            show-account-name? show-account-full-name?)
+  ;;# on multi-line splits we can get an empty ('()) account
+  (if (null? account)
+      (G_ "Split Transaction")
+      (with-output-to-string
+        (lambda ()
+          (when show-account-code?
+            (display (xaccAccountGetCode account))
+            (display " "))
+          (when show-account-name?
+            (display
+              (if show-account-full-name?
+                  (gnc-account-get-full-name account)
+                  (xaccAccountGetName account))))))))
+
+;; find the matching split in a more permissive manner than the default register match
+;; + Splits on the same side as main split are ignored.
+;; + Splits with zero value are excluded unless main split is zero as well.
+;; + If there is still more than one other split, then split on the other side with same
+;;   value is matched.
+(define (get-other-split-permissive s)
+  (let* ((other-splits (delete s (xaccTransGetSplitList (xaccSplitGetParent s))))
+         (split-value (xaccSplitGetValue s))
+         (split-is-zero (gnc-numeric-zero-p split-value))
+         (candidate-splits
+           (filter-map
+             (lambda (o)
+               (let ((other-split-value (xaccSplitGetValue o)))
+                (if (or (and (not split-is-zero)
+                          (or (gnc-numeric-zero-p other-split-value)
+                              (eqv?
+                                (gnc-numeric-positive-p other-split-value)
+                                (gnc-numeric-positive-p split-value))))
+                        (eqv? (xaccAccountGetType (xaccSplitGetAccount o))
+                              ACCT-TYPE-TRADING))
+                  #f o)))
+               other-splits))
+         (matching-splits (if (< (length candidate-splits) 2)
+                            candidate-splits
+                            (filter-map
+                              (lambda (o)
+                                (if (and (not split-is-zero)
+                                         (gnc-numeric-eq
+                                           (xaccSplitGetValue o)
+                                           (gnc-numeric-neg split-value)))
+                                  o #f))
+                              candidate-splits))))
+    (if (= (length matching-splits) 1) (car matching-splits) #nil)))
+
+;; find the matching split either using regular match or permissive match depending
+;; option chosen
+(define (get-other-split s parameters)
+  (if (assq-ref parameters 'permissive-split-match)
+      (get-other-split-permissive s)
+      (xaccSplitGetOtherSplit s)))
 
 (define (sortkey-list parameters)
   ;; Defines the different sorting keys, as an association-list
@@ -315,16 +374,24 @@ in the Options panel."))
               (cons 'renderer-fn #f))
 
         (list 'corresponding-acc-name
-              (cons 'sortkey (list SPLIT-CORR-ACCT-NAME))
-              (cons 'split-sortvalue xaccSplitGetCorrAccountFullName)
+              (cons 'sortkey #f)
+              (cons 'split-sortvalue (lambda (s) (account-namestring
+                                                   (xaccSplitGetAccount
+                                                     (get-other-split s parameters))
+                                                   #f #t #t)))
               (cons 'text (G_ "Other Account Name"))
-              (cons 'renderer-fn (compose xaccSplitGetAccount xaccSplitGetOtherSplit)))
+              (cons 'renderer-fn (lambda (s) (xaccSplitGetAccount
+                                               (get-other-split s parameters)))))
 
         (list 'corresponding-acc-code
-              (cons 'sortkey (list SPLIT-CORR-ACCT-CODE))
-              (cons 'split-sortvalue xaccSplitGetCorrAccountCode)
+              (cons 'sortkey #f)
+              (cons 'split-sortvalue (lambda (s) (account-namestring
+                                                   (xaccSplitGetAccount
+                                                     (get-other-split s parameters))
+                                                   #t #f #f)))
               (cons 'text (G_ "Other Account Code"))
-              (cons 'renderer-fn (compose xaccSplitGetAccount xaccSplitGetOtherSplit)))
+              (cons 'renderer-fn (lambda (s) (xaccSplitGetAccount
+                                               (get-other-split s parameters)))))
 
         (list 'amount
               (cons 'sortkey (list SPLIT-VALUE))
@@ -1075,6 +1142,10 @@ Default is [No Match]/[Empty String].")
        detail-is-single?)
 
       (gnc-optiondb-set-option-selectable-by-name
+       options gnc:pagename-display optname-permissive-split-match
+       detail-is-single?)
+
+      (gnc-optiondb-set-option-selectable-by-name
        options gnc:pagename-display (N_ "Notes")
        disp-memo?))
 
@@ -1099,6 +1170,11 @@ Default is [No Match]/[Empty String].")
       ;; other account name option appears here
       (list (N_ "Use Full Other Account Name")  "i"  (G_ "Display the full account name?") #f)
       (list (N_ "Other Account Code")           "j"  (G_ "Display the other account code?") #f)
+      (list optname-permissive-split-match "j2"
+        (G_ "The following rules are added for a more permissive match in case of split transactions:
++ Splits on the same side as main split are ignored.
++ Splits with zero value are excluded unless main split is zero as well.
++ If there is still more than one other split, then split on the other side with same value is matched.") #f)
       (list (N_ "Shares")                       "k"  (G_ "Display the number of shares?") #f)
       (list (N_ "Link")                         "l5" (G_ "Display the transaction linked document") #f)
       (list (N_ "Price")                        "l"  (G_ "Display the shares price?") #f)
@@ -1355,7 +1431,7 @@ Default is [No Match]/[Empty String].")
                                                 (xaccSplitGetParent split)))
                                           (account-namestring
                                            (xaccSplitGetAccount
-                                            (xaccSplitGetOtherSplit split))
+                                            (get-other-split split parameters))
                                            (report-uses? 'other-account-code)
                                            (report-uses? 'other-account-name)
                                            (report-uses? 'other-account-full-name)))))))
@@ -1926,23 +2002,6 @@ Default is [No Match]/[Empty String].")
     ;; renderers
     ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    ;; display an account name depending on the options the user has set
-    (define (account-namestring account show-account-code?
-                                show-account-name? show-account-full-name?)
-      ;;# on multi-line splits we can get an empty ('()) account
-      (if (null? account)
-          (G_ "Split Transaction")
-          (with-output-to-string
-            (lambda ()
-              (when show-account-code?
-                (display (xaccAccountGetCode account))
-                (display " "))
-              (when show-account-name?
-                (display
-                 (if show-account-full-name?
-                     (gnc-account-get-full-name account)
-                     (xaccAccountGetName account))))))))
-
     ;; retrieve date renderer from the date-subtotal-list
     (define (render-date date-subtotal-key split)
       ((keylist-get-info date-subtotal-list date-subtotal-key 'renderer-fn) split))
@@ -2485,6 +2544,9 @@ Default is [No Match]/[Empty String].")
                 (cons 'other-account-full-name
                       (and detail-is-single?
                             (opt-val gnc:pagename-display (N_ "Use Full Other Account Name"))))
+                (cons 'permissive-split-match
+                      (and detail-is-single?
+                            (opt-val gnc:pagename-display optname-permissive-split-match)))
                 (cons 'trans-number (and split-action?
                                         (opt-val gnc:pagename-display (N_ "Trans Number"))))
                 (cons 'links (opt-val gnc:pagename-display "Enable Links"))
