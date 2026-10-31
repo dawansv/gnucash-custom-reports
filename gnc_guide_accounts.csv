@@ -1,0 +1,32 @@
+Type,Full Account Name,Account Name,Account Code,Description,Account Colour,Notes,Symbol,Namespace,Hidden,Tax Info,Placeholder
+ASSET,Assets,Assets,,Asset Accounts,,,AUD,CURRENCY,F,F,F
+ASSET,Assets:Current Assets,Current Assets,,Current Assets,,,AUD,CURRENCY,F,F,F
+CASH,Assets:Current Assets:Cash in Wallet,Cash in Wallet,,Cash in Wallet,,,AUD,CURRENCY,F,F,F
+LIABILITY,Liabilities,Liabilities,,Liability Accounts,,,AUD,CURRENCY,F,F,F
+LIABILITY,Liabilities:Credit Card,Credit Card,,Credit Cards,,,AUD,CURRENCY,F,F,F
+CREDIT,Liabilities:Credit Card:Visa,Visa,,Visa Credit Card,,,AUD,CURRENCY,F,F,F
+INCOME,Income,Income,,Income Accounts,,,AUD,CURRENCY,F,F,F
+INCOME,Income:Salary,Salary,,Salary Income,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses,Expenses,,Expense Accounts,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Car,Car,,Car,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Clothes,Clothes,,Clothing Expenses,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Electricity,Electricity,,Electricity Utility,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Food,Food,,Food,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Groceries,Groceries,,Grocery Shopping,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Household,Household,,Household Expenses,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Interest,Interest,,Credit Card Interest Expense,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Internet,Internet,,Internet Subscription,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Phone,Phone,,Phone Utility,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Rent,Rent,,House Rent,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Service Charges,Service Charges,,Bank Service Charges,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Taxes,Taxes,,Tax Payments,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Taxes:Federal,Federal,,Federal Income Tax,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Taxes:Income Tax,Income Tax,,Income Tax,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Taxes:Medicare,Medicare,,Medicare Tax,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Taxes:Social Security,Social Security,,Social Security Tax,,,AUD,CURRENCY,F,F,F
+EXPENSE,Expenses:Tools,Tools,,Hardware Tools,,,AUD,CURRENCY,F,F,F
+EQUITY,Equity,Equity,,Equity Accounts,,,AUD,CURRENCY,F,F,F
+EQUITY,Equity:Opening Balance,Opening Balance,,Opening Balance,,,AUD,CURRENCY,F,F,F
+BANK,Bank,Bank,,,,,AUD,CURRENCY,F,F,F
+BANK,Bank:Checking,Checking,,Checking,,,AUD,CURRENCY,F,F,F
+BANK,Bank:Savings,Savings,,Savings,,,AUD,CURRENCY,F,F,F

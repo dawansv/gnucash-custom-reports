@@ -1,0 +1,63 @@
+Date,Number,Description,Notes,Memo,Account,Amount
+25/03/26,,ATM Withdrawal,,,Assets:Current Assets:Cash in Wallet,100
+,,,,,Bank:Checking,-100
+01/03/26,,Opening Balance Checking,,,Bank:Checking,1000
+,,,,,Equity:Opening Balance,-1000
+05/03/26,,Partial Payment,,,Liabilities:Credit Card:Visa,300
+,,,,,Bank:Checking,-300
+05/03/26,101,Grocery Store,,,Expenses:Groceries,45.21
+,,,,,Bank:Checking,-45.21
+05/03/26,105,Hometown Grocery,,,Expenses:Groceries,75
+,,,,,Bank:Checking,-75
+06/03/26,,Transfer Money,,,Bank:Checking,100
+,,,,,Bank:Savings,-100
+06/03/26,106,ABC Hardware,,#tax,Expenses:Household,50
+,,,,,Expenses:Tools,50
+,,,,,Bank:Checking,-100
+15/03/26,,Employers R Us,,,Bank:Checking,670
+,,,,,Expenses:Taxes:Federal,180
+,,,,,Expenses:Taxes:Medicare,90
+,,,,,Expenses:Taxes:Social Security,60
+,,,,tax,Income:Salary,-1000
+24/03/26,,Transfer Money,,,Bank:Checking,500
+,,,,,Bank:Savings,-500
+28/03/26,,Internet Subscription,#tax #house test,,Expenses:Internet,20
+,,,,,Bank:Checking,-20
+28/03/26,102,Light Company,,,Expenses:Electricity,78
+,,,,,Bank:Checking,-78
+28/03/26,103,Phone Company,#tax,,Expenses:Phone,45
+,,,,,Bank:Checking,-45
+28/03/26,104,April Rent,#house,,Expenses:Rent,350
+,,,,,Bank:Checking,-350
+31/03/26,,Service Charge,,,Expenses:Service Charges,5
+,,,,,Bank:Checking,-5
+28/04/26,,May Rent,#house,,Expenses:Rent,350
+,,,,,Bank:Checking,-350
+05/05/26,,Partial Payment of Visa Bill,,,Liabilities:Credit Card:Visa,300
+,,,,,Bank:Checking,-300
+01/03/26,,Opening Balance Savings,,,Bank:Savings,1000
+,,,,,Equity:Opening Balance,-1000
+01/03/26,,Opening Balance,,,Equity:Opening Balance,500
+,,,,,Liabilities:Credit Card:Visa,-500
+12/04/26,,Premium Gasolin,,,Expenses:Car,25
+,,,,,Liabilities:Credit Card:Visa,-25
+03/04/26,,Jeans R Us,,,Expenses:Clothes,74.99
+,,,,,Liabilities:Credit Card:Visa,-74.99
+,,,,,Liabilities:Credit Card:Visa,74.99
+,,,,,Expenses:Clothes,-74.99
+11/04/26,,Faux Pas Fashions,,,Expenses:Clothes,100
+,,,,,Liabilities:Credit Card:Visa,-100
+,,,,,Liabilities:Credit Card:Visa,100
+,,,,,Expenses:Clothes,-100
+07/04/26,,Greasy Spoon Cafe,,,Expenses:Food,25
+,,,,,Liabilities:Credit Card:Visa,-25
+14/04/26,,Groceries R Us,,,Expenses:Groceries,85
+,,,,,Expenses:Household,40
+,,,,,Liabilities:Credit Card:Visa,-125
+15/04/26,,CheapMart,,,Expenses:Household,60
+,,,,,Liabilities:Credit Card:Visa,-60
+30/04/26,,Interest,,,Expenses:Interest,20
+,,,,,Liabilities:Credit Card:Visa,-20
+
+30/04/26,,Interest,Expenses:Interest,20
+,,,Liabilities:Credit Card:Visa,-20
